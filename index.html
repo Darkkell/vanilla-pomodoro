@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pomodoro</title>
+    <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+    <main class="app">
+        <progress id="js-progress" value="0"></progress>
+        <div class="progress-bar"></div>
+
+        <div class="settings" onclick="openSettings()">
+            Settings
+            <i class="fa-solid fa-gear"></i>
+        </div>
+
+        <div class="timer">
+            <div class="button-group mode-buttons" id="js-mode-buttons">
+                <button data-mode="pomodoro" class="button active mode-button" id="js-pomodoro">
+                    Pomodoro
+                </button>
+                <button data-mode="shortBreak" class="button mode-button" id="js-short-break">
+                    Short break
+                </button>
+                <button data-mode="longBreak" class="button mode-button" id="js-long-break">
+                    Long break
+                </button>
+            </div>
+            <div class="clock" id="js-clock">
+                <span id="js-minutes">00</span>
+                <span class="separator">:</span>
+                <span id="js-seconds">00</span>
+            </div>
+            <button class="main-button" data-action="start" id="js-btn">
+                Start
+            </button>
+
+        </div>
+
+        <div class="settings-list">
+            <i class="fa-solid fa-xmark close" onclick="closeSettings()">close</i>
+            <h3>Work</h3>
+            <div class="d-flex flex-columns gap-10">
+                <label>
+                    Minutes
+                    <input type="number" id="work-time-minutes" min="0" step="5" value="25">
+                </label>
+                <label>
+                    Seconds
+                    <input type="number" id="work-time-seconds" min="0" step="1" value="0">
+                </label>
+
+            </div>
+            <h3 class="mt-3">Rest</h3>
+            <div class="d-flex flex-columns gap-10">
+                <label>
+                    Minutes
+                    <input type="number" id="rest-time-minutes" min="0" step="5" value="5">
+                </label>
+                <label>
+                    Seconds
+                    <input type="number" id="rest-time-seconds" min="0" step="1" value="0">
+                </label>
+            </div>
+            <h3>Long Rest</h3>
+            <div class="d-flex flex-columns gap-10">
+                <label>
+                    Minutes
+                    <input type="number" id="long-rest-time-minutes" min="0" step="5" value="15">
+                </label>
+                <label>
+                    Seconds
+                    <input type="number" id="long-rest-time-seconds" min="0" step="1" value="0">
+                </label>
+            </div>
+            <h3>Intervals</h3>
+            <div class="d-flex flex-columns gap-10">
+                <label>
+                    Intervals
+                    <input type="number" id="work-time-intervals" min="0" step="1" value="4">
+                </label>
+            </div>
+            <button onclick="applyNewTimes()">Apply</button>
+        </div>
+
+    </main>
+    <div class="hidden">
+        <audio src="sounds/backtowork.mp3" data-sound="pomodoro"></audio>
+        <audio src="sounds/break.mp3" data-sound="shortBreak"></audio>
+        <audio src="sounds/break.mp3" data-sound="longBreak"></audio>
+    </div>
+    <script src="main.js"></script>
+</body>
+
+</html>
